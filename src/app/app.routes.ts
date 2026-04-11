@@ -69,7 +69,7 @@ export const routes: Routes = [
         title: 'Place Order',
       },
       {
-        path: 'Statistics',
+        path: 'statistics',
         loadComponent: () =>
           import('./pages/dashboard-page/inner-pages/statistics/statistics').then(
             (ob) => ob.Statistics,
