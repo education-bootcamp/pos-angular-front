@@ -1,0 +1,14 @@
+.outer{
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  justify-content: center;
+
+  .text{
+    color: var(--light-color);
+  }
+
+}

@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+.not-found {
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // ── BACKGROUND ─────────────────────────────────
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(22, 160, 133, 0.12);
+      top: -120px;
+      left: -100px;
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(41, 128, 185, 0.1);
+      bottom: -100px;
+      right: -80px;
+    }
+  }
+
+  // ── CONTAINER ──────────────────────────────────
+  &__container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 2rem;
+  }
+
+  // ── 404 DISPLAY ────────────────────────────────
+  &__code-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  &__four {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(6rem, 16vw, 10rem);
+    font-weight: 800;
+    color: var(--light-color);
+    opacity: 0.9;
+    animation: fadeSlideIn 0.6s ease both;
+
+    &:last-child {
+      animation-delay: 0.3s;
+    }
+  }
+
+  &__zero {
+    position: relative;
+    width: clamp(90px, 14vw, 150px);
+    height: clamp(90px, 14vw, 150px);
+    animation: fadeSlideIn 0.6s ease 0.15s both;
+  }
+
+  &__zero-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 4px solid var(--green-color);
+    opacity: 0.5;
+    animation: spin 8s linear infinite;
+    background: transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green-color);
+    }
+  }
+
+  &__zero-inner {
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    background: rgba(22, 160, 133, 0.12);
+    border: 1px solid rgba(22, 160, 133, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    filter: drop-shadow(0 0 12px var(--green-color));
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  // ── TEXT ───────────────────────────────────────
+  &__heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--light-color);
+    margin: 0;
+    animation: fadeUp 0.5s ease 0.35s both;
+  }
+
+  &__sub {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0;
+    animation: fadeUp 0.5s ease 0.45s both;
+  }
+
+  // ── ACTIONS ────────────────────────────────────
+  &__actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.5s ease 0.55s both;
+  }
+
+  &__btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+
+    &--primary {
+      background: var(--green-color);
+      color: var(--light-color);
+
+      &:hover {
+        opacity: 0.88;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(22, 160, 133, 0.35);
+      }
+    }
+
+    &--ghost {
+      background: rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--light-color);
+      }
+    }
+  }
+
+  // ── QUICK LINKS ────────────────────────────────
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    animation: fadeUp 0.5s ease 0.65s both;
+  }
+
+  &__links-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__quick-links {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__quick-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(22, 160, 133, 0.15);
+      border-color: rgba(22, 160, 133, 0.35);
+      color: var(--light-color);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ── ANIMATIONS ───────────────────────────────────
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(0.92); }
+}

@@ -1,0 +1,85 @@
+<footer class="footer">
+  <div class="footer__glow"></div>
+
+  <div class="footer__container">
+
+    <!-- Top: Brand + Columns -->
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="footer__logo-icon">⚡</span>
+          <span class="footer__logo-text">SwiftPOS</span>
+        </div>
+        <p class="footer__tagline">
+          The fastest, simplest point-of-sale system for modern businesses.
+        </p>
+        <div class="footer__socials">
+          @for (social of socials; track social.label) {
+            <a
+              class="footer__social-link"
+              [href]="social.href"
+              [title]="social.label"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ social.icon }}
+            </a>
+          }
+        </div>
+        <div class="footer__badges">
+          <span class="footer__badge">🔒 PCI DSS</span>
+          <span class="footer__badge">✅ SOC 2</span>
+          <span class="footer__badge">🌍 GDPR</span>
+        </div>
+      </div>
+
+      <div class="footer__columns">
+        @for (col of columns; track col.heading) {
+          <div class="footer__column">
+            <h4 class="footer__col-heading">{{ col.heading }}</h4>
+            <ul class="footer__col-links">
+              @for (link of col.links; track link.label) {
+                <li>
+                  <a class="footer__link" [href]="link.href">{{ link.label }}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer__newsletter">
+      <div class="footer__newsletter-text">
+        <span class="footer__newsletter-title">Stay in the loop</span>
+        <span class="footer__newsletter-sub">Product updates, tips & offers — no spam.</span>
+      </div>
+      <div class="footer__newsletter-form">
+        <input
+          class="footer__input"
+          type="email"
+          placeholder="your@email.com"
+          [(ngModel)]="email"
+        />
+        <button class="footer__submit" (click)="onSubscribe()">Subscribe</button>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="footer__divider"></div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <span class="footer__copy">© {{ currentYear }} SwiftPOS Inc. All rights reserved.</span>
+      <div class="footer__legal">
+        @for (item of legalLinks; track item.label) {
+          <a class="footer__legal-link" [href]="item.href">{{ item.label }}</a>
+        }
+      </div>
+    </div>
+
+  </div>
+</footer>

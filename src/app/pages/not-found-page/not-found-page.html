@@ -1,0 +1,47 @@
+<section class="not-found">
+  <div class="not-found__bg-grid"></div>
+  <div class="not-found__orb not-found__orb--1"></div>
+  <div class="not-found__orb not-found__orb--2"></div>
+
+  <div class="not-found__container">
+
+    <div class="not-found__code-wrap">
+      <span class="not-found__four">4</span>
+      <div class="not-found__zero">
+        <div class="not-found__zero-ring"></div>
+        <div class="not-found__zero-inner">
+          <span class="not-found__icon">⚡</span>
+        </div>
+      </div>
+      <span class="not-found__four">4</span>
+    </div>
+
+    <h1 class="not-found__heading">Page not found</h1>
+    <p class="not-found__sub">
+      Looks like this register is empty. The page you're looking for
+      doesn't exist or has been moved.
+    </p>
+
+    <div class="not-found__actions">
+      <button class="not-found__btn not-found__btn--primary" (click)="goHome()">
+        ← Back to Home
+      </button>
+      <button class="not-found__btn not-found__btn--ghost" (click)="goBack()">
+        Go Back
+      </button>
+    </div>
+
+    <div class="not-found__links">
+      <span class="not-found__links-label">Or try one of these:</span>
+      <div class="not-found__quick-links">
+        @for (link of quickLinks; track link.label) {
+          <a class="not-found__quick-link" [href]="link.href">
+            <span>{{ link.icon }}</span>
+            {{ link.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

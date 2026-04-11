@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(22, 160, 133, 0.18), transparent 70%);
+    }
+  }
+
+
+  // ── CONTENT ──────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 5%;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(22, 160, 133, 0.15);
+    border: 1px solid rgba(22, 160, 133, 0.35);
+    color: #4ecdc4;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  &__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--green-color);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  &__headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--light-color);
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  &__headline-accent {
+    color: var(--green-color);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--green-color);
+      border-radius: 2px;
+      opacity: 0.5;
+    }
+  }
+
+  &__sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--light-color);
+  }
+
+  &__stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  // ── RIGHT CARDS ──────────────────────────────────
+  &__right {
+    flex: 1;
+    position: relative;
+    min-height: 380px;
+  }
+
+  &__card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.6rem;
+    color: var(--light-color);
+
+    &--main {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+    }
+
+    &--mini {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      width: 180px;
+    }
+
+    &--mini-left {
+      bottom: 20px;
+      left: 0;
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    &--mini-right {
+      bottom: 60px;
+      right: 0;
+      animation: float 4s ease-in-out infinite reverse;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+
+  &__card-title {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+
+  &__card-badge {
+    background: rgba(22,160,133,0.2);
+    color: #4ecdc4;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  &__card-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+
+  &__card-trend {
+    font-size: 0.82rem;
+    color: var(--green-color);
+    margin-bottom: 1rem;
+  }
+
+  &__card-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+  }
+
+  &__card-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-color), var(--blue-color));
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  &__card-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  &__mini-icon { font-size: 1.5rem; }
+
+  &__mini-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  &__mini-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+  }
+}
+
+// ── BUTTONS ──────────────────────────────────────────
+.btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+
+  &--primary {
+    background-color: var(--green-color);
+    color: var(--light-color);
+
+    &:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22,160,133,0.35); }
+  }
+
+  &--ghost {
+    background: rgba(255,255,255,0.08);
+    color: var(--light-color);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover { background: rgba(255,255,255,0.14); }
+  }
+
+  &__play {
+    font-size: 0.75rem;
+    background: var(--light-color);
+    color: var(--primary-color);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+  }
+}
+
+// ── ANIMATIONS ───────────────────────────────────────
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

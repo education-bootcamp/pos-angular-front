@@ -1,0 +1,68 @@
+<section class="hero">
+  <div class="hero__bg-grid"></div>
+
+  <div class="hero__content">
+    <div class="hero__left">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Trusted by 10,000+ businesses
+      </div>
+      <h1 class="hero__headline">
+        The POS System <br />
+        <span class="hero__headline-accent">Built for Speed</span>
+      </h1>
+      <p class="hero__sub">
+        Process sales, manage inventory, and track every transaction in real time —
+        all from one beautifully simple dashboard.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" (click)="onGetStarted()">Start Free Trial</button>
+        <button class="btn btn--ghost" (click)="onWatchDemo()">
+          <span class="btn__play">▶</span> Watch Demo
+        </button>
+      </div>
+      <div class="hero__stats">
+        @for (stat of stats; track stat.label) {
+          <div class="hero__stat">
+            <span class="hero__stat-value">{{ stat.value }}</span>
+            <span class="hero__stat-label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__card hero__card--main">
+        <div class="hero__card-header">
+          <span class="hero__card-title">Today's Sales</span>
+          <span class="hero__card-badge">LIVE</span>
+        </div>
+        <div class="hero__card-amount">$12,480.50</div>
+        <div class="hero__card-trend">↑ 18.4% vs yesterday</div>
+        <div class="hero__card-bar">
+          <div class="hero__card-bar-fill" [style.width]="barWidth + '%'"></div>
+        </div>
+        <div class="hero__card-footer">
+          <span>Goal: $15,000</span>
+          <span>{{ barWidth }}%</span>
+        </div>
+      </div>
+
+      <div class="hero__card hero__card--mini hero__card--mini-left">
+        <span class="hero__mini-icon">🧾</span>
+        <div>
+          <div class="hero__mini-value">348</div>
+          <div class="hero__mini-label">Transactions</div>
+        </div>
+      </div>
+
+      <div class="hero__card hero__card--mini hero__card--mini-right">
+        <span class="hero__mini-icon">📦</span>
+        <div>
+          <div class="hero__mini-value">1,204</div>
+          <div class="hero__mini-label">Items Sold</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

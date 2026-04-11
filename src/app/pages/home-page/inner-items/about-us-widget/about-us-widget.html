@@ -1,0 +1,67 @@
+<section class="about" id="about">
+  <div class="about__container">
+
+    <div class="about__left">
+      <div class="about__image-stack">
+        <div class="about__img-card about__img-card--back">
+          <div class="about__img-placeholder about__img-placeholder--2">
+            <span>🏪</span>
+          </div>
+        </div>
+        <div class="about__img-card about__img-card--front">
+          <div class="about__img-placeholder about__img-placeholder--1">
+            <span>💳</span>
+          </div>
+        </div>
+        <div class="about__floating-badge">
+          <span class="about__badge-icon">🚀</span>
+          <div>
+            <div class="about__badge-value">Since 2018</div>
+            <div class="about__badge-label">Serving businesses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__right">
+      <div class="about__tag">Who We Are</div>
+      <h2 class="about__heading">
+        Built by retailers, <br />
+        <em>for retailers.</em>
+      </h2>
+      <p class="about__body">
+        SwiftPOS was born out of frustration with slow, bloated point-of-sale systems.
+        We're a team of ex-retail operators and engineers who knew there had to be a better way —
+        so we built it.
+      </p>
+      <p class="about__body">
+        Today, SwiftPOS powers everything from corner cafés to multi-location retail chains,
+        giving every business the tools that were once reserved for enterprise giants.
+      </p>
+
+      <div class="about__values">
+        @for (value of values; track value.title) {
+          <div class="about__value">
+            <div class="about__value-icon">{{ value.icon }}</div>
+            <div>
+              <div class="about__value-title">{{ value.title }}</div>
+              <div class="about__value-desc">{{ value.desc }}</div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="about__team-strip">
+        <div class="about__team-avatars">
+          @for (member of team; track member.name) {
+            <div class="about__avatar" [title]="member.name">
+              {{ member.initials }}
+            </div>
+          }
+        </div>
+        <div class="about__team-label">Meet our 40+ person team across 12 countries</div>
+      </div>
+    </div>
+
+  </div>
+</section>

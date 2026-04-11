@@ -1,0 +1,73 @@
+<section class="pricing" id="pricing">
+  <div class="pricing__container">
+
+    <div class="pricing__header">
+      <div class="pricing__tag">Pricing</div>
+      <h2 class="pricing__heading">Simple, transparent pricing</h2>
+      <p class="pricing__sub">No hidden fees. No long-term contracts. Cancel anytime.</p>
+
+      <div class="pricing__toggle">
+        <span [class.active]="!isAnnual">Monthly</span>
+        <button class="pricing__toggle-btn" (click)="toggleBilling()">
+          <span class="pricing__toggle-knob" [class.right]="isAnnual"></span>
+        </button>
+        <span [class.active]="isAnnual">Annual <em class="pricing__save-badge">Save 20%</em></span>
+      </div>
+    </div>
+
+    <div class="pricing__cards">
+      @for (plan of plans; track plan.name) {
+        <div class="pricing__card" [class.pricing__card--featured]="plan.featured">
+          <div class="pricing__card-top">
+            @if (plan.featured) {
+              <div class="pricing__plan-badge">Most Popular</div>
+            }
+            <div class="pricing__plan-icon">{{ plan.icon }}</div>
+            <div class="pricing__plan-name">{{ plan.name }}</div>
+            <div class="pricing__plan-desc">{{ plan.desc }}</div>
+          </div>
+
+          <div class="pricing__price">
+            <span class="pricing__currency">$</span>
+            <span class="pricing__amount">{{ isAnnual ? plan.annualPrice : plan.monthlyPrice }}</span>
+            <span class="pricing__period">/mo</span>
+          </div>
+
+          @if (isAnnual) {
+            <div class="pricing__billed-note">
+              Billed annually (${{ (isAnnual ? plan.annualPrice : plan.monthlyPrice) * 12 }}/yr)
+            </div>
+          }
+
+          <ul class="pricing__features">
+            @for (feature of plan.features; track feature.label) {
+              <li class="pricing__feature">
+                <span class="pricing__feature-check" [class.included]="feature.included">
+                  {{ feature.included ? '✓' : '✗' }}
+                </span>
+                {{ feature.label }}
+              </li>
+            }
+          </ul>
+
+          <button
+            class="pricing__cta"
+            [class.pricing__cta--featured]="plan.featured"
+            (click)="onSelectPlan(plan)"
+          >
+            {{ plan.cta }}
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="pricing__footer">
+      @for (item of footerItems; track item.label) {
+        <div class="pricing__footer-item">
+          <span>{{ item.icon }}</span> {{ item.label }}
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
