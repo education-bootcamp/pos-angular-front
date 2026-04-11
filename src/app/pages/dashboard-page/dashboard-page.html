@@ -3,7 +3,22 @@
     <app-dashboard-main-header />
   </div>
   <div class="playground">
+    <nav class="tab-bar">
+      @for (tab of tabs; track tab.path) {
+        <a class="tab-item"
+          [routerLink]="tab.path"
+          routerLinkActive="active"
+          >
+        <span class="tab-icon">{{ tab.icon }}</span>
+        <span class="tab-label">{{ tab.label }}</span>
+        </a>
+      }
+    </nav>
 
+    <!-- Child Route Content -->
+    <div class="tab-content">
+      <router-outlet />
+    </div>
   </div>
   <div class="footer-wrapper">
     <app-dashboard-main-footer />
