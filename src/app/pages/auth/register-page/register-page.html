@@ -1,6 +1,12 @@
 <div class="outer">
   <div class="inner">
-    <form [formGroup]="loginForm" (ngSubmit)="execute()">
+    <form [formGroup]="form" (ngSubmit)="execute()">
+    
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Full Name</mat-label>
+      <input formControlName="fullName" type="text" matInput placeholder="Ex. Saman Perera">
+    </mat-form-field>
+    
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Email</mat-label>
       <input formControlName="email" type="email" matInput placeholder="Ex. pat@example.com">
@@ -15,7 +21,7 @@
 
     <hr>
 
-    <a routerLink="/auth/login">Already have an Account? login.</a>
+    <a routerLink="/home/login">Already have an Account? login.</a>
 
   </div>
 </div>
