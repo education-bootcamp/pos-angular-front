@@ -13,4 +13,22 @@ export class CookieManagerService {
     return this._cookieService.check(this.TOKEN_NAME);
   }
 
+  getToken():string | null{
+    const token = this._cookieService.get(this.TOKEN_NAME);
+    return token || null;
+  }
+
+  setToken(token: string){
+    this._cookieService.set(this.TOKEN_NAME, token);
+  }
+
+  removeToken(){
+    this._cookieService.delete(this.TOKEN_NAME)
+  }
+
+  logout():boolean{
+    this._cookieService.deleteAll();
+    return true;
+  }
+
 }
