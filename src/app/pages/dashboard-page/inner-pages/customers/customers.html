@@ -2,7 +2,7 @@
   <div class="page-header">
     <div class="header-left">
       <h1 class="page-title">Customers</h1>
-      <span class="record-count">{{ filteredCustomers.length }} records</span>
+      <span class="record-count">{{ totalRecords() }} records</span>
     </div>
     <div class="header-actions">
       <div class="search-bar">
@@ -35,8 +35,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let customer of pagedCustomers; let i = index" class="table-row">
-        <td class="id-cell">{{ customer.id }}</td>
+      <tr *ngIf="loading()">
+        <td colspan="5" class="empty-state">
+          <mat-icon>hourglass_empty</mat-icon>
+          <p>Loading customers...</p>
+        </td>
+      </tr>
+      <tr *ngFor="let customer of pagedCustomers(); index as rowIndex" class="table-row" [hidden]="loading()">
+        <td class="id-cell">{{ rowIndex + 1 }}</td>
         <td class="name-cell">
           <div class="avatar">{{ customer.name.charAt(0) }}</div>
           <span>{{ customer.name }}</span>
@@ -52,7 +58,7 @@
           </button>
         </td>
       </tr>
-      <tr *ngIf="pagedCustomers.length === 0">
+      <tr *ngIf="!loading() && pagedCustomers().length === 0">
         <td colspan="5" class="empty-state">
           <mat-icon>person_off</mat-icon>
           <p>No customers found</p>
@@ -64,11 +70,12 @@
 
   <div class="pagination-wrapper">
     <span class="pagination-info">
-      Showing {{ (currentPage - 1) * pageSize + 1 }}–{{ min(currentPage * pageSize, filteredCustomers.length) }} of {{ filteredCustomers.length }}
+      Showing {{ totalRecords() === 0 ? 0 : (currentPage - 1) * pageSize + 1 }}–{{ min(currentPage * pageSize, totalRecords()) }} of {{ totalRecords() }}
     </span>
     <mat-paginator
-      [length]="filteredCustomers.length"
+      [length]="totalRecords()"
       [pageSize]="pageSize"
+      [pageIndex]="currentPage - 1"
       [pageSizeOptions]="[5, 10, 20]"
       (page)="onPageChange($event)"
       showFirstLastButtons

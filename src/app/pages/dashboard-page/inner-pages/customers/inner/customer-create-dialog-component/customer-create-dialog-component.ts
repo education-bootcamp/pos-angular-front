@@ -3,6 +3,8 @@ import { MatIcon } from '@angular/material/icon';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CustomerService } from '../../../../../../services/customer-service';
+import { Customer } from '../../../../../../dto/Customer';
 
 @Component({
   selector: 'app-customer-create-dialog-component',
@@ -12,10 +14,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CustomerCreateDialogComponent {
   form: FormGroup;
+  saving = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<CustomerCreateDialogComponent>
+    private dialogRef: MatDialogRef<CustomerCreateDialogComponent>,
+    private customerService: CustomerService
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -25,11 +30,25 @@ export class CustomerCreateDialogComponent {
   }
 
   save(): void {
-    if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
-    } else {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
     }
+
+    this.saving = true;
+    this.errorMessage = '';
+    const payload: Customer = this.form.value;
+
+    this.customerService.saveCustomer(payload).subscribe({
+      next: (created: Customer) => {
+        this.saving = false;
+        this.dialogRef.close(created ?? payload);
+      },
+      error: () => {
+        this.saving = false;
+        this.errorMessage = 'Failed to create customer. Please try again.';
+      },
+    });
   }
 
   close(): void {
